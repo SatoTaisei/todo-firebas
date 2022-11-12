@@ -1,6 +1,17 @@
 import Head from 'next/head';
 
+import { useFirebase } from '@/hooks/useFirebase';
+
 export default function Home() {
+    const { todoList, addNewTodo } = useFirebase('todoList');
+
+    const addTodo = (title: string) => {
+        addNewTodo({
+            title: title,
+            isDone: false,
+        });
+    };
+
     return (
         <div>
             <Head>
@@ -12,10 +23,23 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <h1 className="h-screen text-3xl font-bold flex justify-center items-center">
-                    Hello Todo!
-                </h1>
+            <main className="h-screen  flex justify-center items-center flex-col">
+                <h1 className="text-3xl font-bold">Hello Todo!</h1>
+                <button
+                    className="text-xl font-bold border rounded-xl w-32"
+                    onClick={() => {
+                        // TODO: Todoの入力をする。
+                        addTodo('dummy2');
+                    }}
+                >
+                    ボタン
+                </button>
+                <ul>
+                    {todoList &&
+                        Object.entries(todoList).map(([, value], index) => {
+                            return <li key={index}>{value.title}</li>;
+                        })}
+                </ul>
             </main>
         </div>
     );
