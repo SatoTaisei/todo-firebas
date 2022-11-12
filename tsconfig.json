@@ -20,6 +20,5 @@
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"],
-    "plugins": ["strict-dependencies", "unused-imports"]
+    "exclude": ["node_modules"]
 }

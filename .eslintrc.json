@@ -14,5 +14,13 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"]
+    "plugins": [
+        "@typescript-eslint",
+        "strict-dependencies",
+        "import",
+        "unused-imports"
+    ],
+    "rules": {
+        "unused-imports/no-unused-imports": "warn"
+    }
 }
