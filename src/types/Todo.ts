@@ -4,5 +4,5 @@ export type Todo = {
 };
 
 export type TodoList = {
-    todo: Todo;
+    [key: string]: Todo;
 };
