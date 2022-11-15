@@ -5,6 +5,8 @@ import { useFirebase } from '@/hooks/useFirebase';
 export default function Home() {
     const { todoList, addNewTodo } = useFirebase('todoList');
 
+    const loading = !todoList && true;
+
     const addTodo = (title: string) => {
         addNewTodo({
             title: title,
@@ -34,12 +36,16 @@ export default function Home() {
                 >
                     ボタン
                 </button>
-                <ul>
-                    {todoList &&
-                        Object.entries(todoList).map(([, value], index) => {
-                            return <li key={index}>{value.title}</li>;
-                        })}
-                </ul>
+                {loading ? (
+                    <p>loading...</p>
+                ) : (
+                    <ul>
+                        {todoList &&
+                            Object.entries(todoList).map(([, value], index) => {
+                                return <li key={index}>{value.title}</li>;
+                            })}
+                    </ul>
+                )}
             </main>
         </div>
     );
