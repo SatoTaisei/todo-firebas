@@ -38,8 +38,8 @@ export default function Home() {
             <main className="h-screen flex items-center flex-col pt-28">
                 {/* Input Area */}
                 <div className="flex">
-                    <TodoInput {...{ inputTodo, setInputTodo }} />
-                    <AddButton {...{ inputTodo, setInputTodo }} />
+                    <TodoInput {...{ inputTodo, setInputTodo, addTodo }} />
+                    <AddButton {...{ inputTodo, setInputTodo, addTodo }} />
                 </div>
 
                 {loading ? (

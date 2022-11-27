@@ -3,9 +3,10 @@ import { Dispatch, FC, SetStateAction } from 'react';
 type Props = {
     inputTodo: string;
     setInputTodo: Dispatch<SetStateAction<string>>;
+    addTodo: (title: string) => void;
 };
 
-export const AddButton: FC<Props> = ({ inputTodo, setInputTodo }) => {
+export const AddButton: FC<Props> = ({ inputTodo, setInputTodo, addTodo }) => {
     return (
         <button
             type="button"
@@ -13,7 +14,7 @@ export const AddButton: FC<Props> = ({ inputTodo, setInputTodo }) => {
             onClick={() => {
                 if (inputTodo === '') return;
                 // TODO: firebase DBに追加
-                // addTodo('dummy2');
+                // addTodo(inputTodo);
                 console.log(inputTodo);
                 setInputTodo('');
             }}

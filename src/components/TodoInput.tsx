@@ -3,9 +3,10 @@ import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react';
 type Props = {
     inputTodo: string;
     setInputTodo: Dispatch<SetStateAction<string>>;
+    addTodo: (title: string) => void;
 };
 
-export const TodoInput: FC<Props> = ({ inputTodo, setInputTodo }) => {
+export const TodoInput: FC<Props> = ({ inputTodo, setInputTodo, addTodo }) => {
     return (
         <input
             type="text"
@@ -18,7 +19,7 @@ export const TodoInput: FC<Props> = ({ inputTodo, setInputTodo }) => {
             onKeyDown={(e) => {
                 if (e.key === 'Enter' && inputTodo !== '') {
                     // TODO: firebase DBに追加
-                    // addTodo('dummy2');
+                    // addTodo(inputTodo);
                     console.log(inputTodo);
                     setInputTodo('');
                 }
