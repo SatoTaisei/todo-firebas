@@ -1,8 +1,11 @@
 import Head from 'next/head';
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 
+import { AddButton } from '@/components/AddButton';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { Loader } from '@/components/Loader';
+import { TodoInput } from '@/components/todoInput';
 import { useFirebase } from '@/hooks/useFirebase';
 
 export default function Home() {
@@ -18,7 +21,6 @@ export default function Home() {
             isDone: false,
         });
     };
-    console.log(addTodo);
 
     return (
         <div>
@@ -33,36 +35,15 @@ export default function Home() {
 
             <Header />
 
-            <main className="h-screen bg-gray-800 flex justify-center items-center flex-col">
+            <main className="h-screen flex items-center flex-col pt-28">
+                {/* Input Area */}
                 <div className="flex">
-                    <input
-                        type="text"
-                        placeholder="TODOを入力"
-                        className="border-4 placeholder-white"
-                        value={inputTodo}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                            setInputTodo(e.target.value);
-                        }}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter' && inputTodo !== '') {
-                                // TODO: firebase DBに追加
-                                // addTodo('dummy2');
-                            }
-                        }}
-                    />
-                    <button
-                        type="button"
-                        className="w-8"
-                        onClick={() => {
-                            if (inputTodo === '') return;
-                        }}
-                    >
-                        {'\u002B'} {/* 追加ボタン */}
-                    </button>
+                    <TodoInput {...{ inputTodo, setInputTodo }} />
+                    <AddButton {...{ inputTodo, setInputTodo }} />
                 </div>
 
                 {loading ? (
-                    <p>loading...</p>
+                    <Loader />
                 ) : (
                     <ul>
                         {todoList &&
