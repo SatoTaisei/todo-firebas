@@ -1,5 +1,7 @@
 export const Footer = () => {
     return (
-        <footer className="absolute bottom-0 w-full bg-gray-900 h-8"></footer>
+        <footer className="hidden md:absolute md:flex md:justify-center md:items-center md:bottom-0 md:w-full md:h-12">
+            <small className="text-neutral-500">&copy; 2022 Sato Taisei</small>
+        </footer>
     );
 };
