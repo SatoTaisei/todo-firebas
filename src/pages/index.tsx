@@ -5,7 +5,7 @@ import { AddButton } from '@/components/AddButton';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
-import { TodoInput } from '@/components/todoInput';
+import { TodoInput } from '@/components/TodoInput';
 import { useFirebase } from '@/hooks/useFirebase';
 
 export default function Home() {
@@ -42,6 +42,7 @@ export default function Home() {
                     <AddButton {...{ inputTodo, setInputTodo, addTodo }} />
                 </div>
 
+                {/* Display Area */}
                 {loading ? (
                     <Loader />
                 ) : (
