@@ -51,7 +51,7 @@ export default function Home() {
                     <Loader />
                 ) : (
                     <ul className="w-11/12 max-w-md mt-10">
-                        {todoList &&
+                        {todoList ? (
                             Object.entries(todoList).map(
                                 ([key, value], index) => {
                                     // TODO: 各TODOに機能を持たせる
@@ -78,13 +78,23 @@ export default function Home() {
                                             >
                                                 {value.isDone && '\u2713'}
                                             </button>
-                                            <span className="ml-4 text-2xl font-medium text-neutral-900 dark:text-neutral-300">
+                                            <span
+                                                className={`${'ml-4 text-2xl font-medium text-neutral-900 dark:text-neutral-300'} ${
+                                                    value.isDone &&
+                                                    'text-neutral-500 dark:text-neutral-500'
+                                                }`}
+                                            >
                                                 {value.title}
                                             </span>
                                         </li>
                                     );
                                 }
-                            )}
+                            )
+                        ) : (
+                            <p className="w-full flex justify-center text-neutral-500 dark:text-neutral-500">
+                                TODOはありません。
+                            </p>
+                        )}
                     </ul>
                 )}
             </main>
