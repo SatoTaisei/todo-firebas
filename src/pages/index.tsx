@@ -9,7 +9,7 @@ import { TodoInput } from '@/components/TodoInput';
 import { useFirebase } from '@/hooks/useFirebase';
 
 export default function Home() {
-    const { todoList, addNewTodo } = useFirebase('todoList');
+    const { todoList, addNewTodo, toggleCheck } = useFirebase('todoList');
 
     const [inputTodo, setInputTodo] = useState<string>('');
 
@@ -20,6 +20,11 @@ export default function Home() {
             title: title,
             isDone: false,
         });
+    };
+
+    const handleClick = (key: string, isDone: boolean) => {
+        // alert(key);
+        toggleCheck(key, !isDone);
     };
 
     return (
@@ -37,7 +42,7 @@ export default function Home() {
 
             <main className="h-screen flex items-center flex-col pt-28">
                 {/* Input Area */}
-                <div className="flex">
+                <div className="flex w-11/12 max-w-md">
                     <TodoInput {...{ inputTodo, setInputTodo, addTodo }} />
                     <AddButton {...{ inputTodo, setInputTodo, addTodo }} />
                 </div>
@@ -46,12 +51,35 @@ export default function Home() {
                 {loading ? (
                     <Loader />
                 ) : (
-                    <ul>
+                    <ul className="w-11/12 max-w-md mt-10">
                         {todoList &&
-                            Object.entries(todoList).map(([, value], index) => {
-                                // TODO: 各TODOに機能を持たせる
-                                return <li key={index}>{value.title}</li>;
-                            })}
+                            Object.entries(todoList).map(
+                                ([key, value], index) => {
+                                    // TODO: 各TODOに機能を持たせる
+                                    return (
+                                        <li
+                                            key={index}
+                                            className="w-full flex items-center mb-4"
+                                        >
+                                            <button
+                                                type="button"
+                                                className={`${'w-8 h-8 rounded-full'} ${
+                                                    value.isDone ||
+                                                    'border-2 border-neutral-500'
+                                                } ${
+                                                    value.isDone &&
+                                                    'text-neutral-900 bg-yellow-500'
+                                                }`}
+                                            >
+                                                {value.isDone && '\u2713'}
+                                            </button>
+                                            <span className="ml-4 text-2xl font-medium text-neutral-900 dark:text-neutral-300">
+                                                {value.title}
+                                            </span>
+                                        </li>
+                                    );
+                                }
+                            )}
                     </ul>
                 )}
             </main>

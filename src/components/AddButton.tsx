@@ -10,12 +10,10 @@ export const AddButton: FC<Props> = ({ inputTodo, setInputTodo, addTodo }) => {
     return (
         <button
             type="button"
-            className="flex justify-center items-baseline w-10 bg-yellow-500 text-neutral-900 rounded-md text-4xl ml-4"
+            className="flex justify-center items-baseline w-11 bg-yellow-500 text-neutral-900 rounded-md text-4xl leading-none ml-4"
             onClick={() => {
                 if (inputTodo === '') return;
-                // TODO: firebase DBに追加
-                // addTodo(inputTodo);
-                console.log(inputTodo);
+                addTodo(inputTodo);
                 setInputTodo('');
             }}
         >
