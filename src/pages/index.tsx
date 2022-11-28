@@ -23,7 +23,6 @@ export default function Home() {
     };
 
     const handleClick = (key: string, isDone: boolean) => {
-        // alert(key);
         toggleCheck(key, !isDone);
     };
 
@@ -70,6 +69,12 @@ export default function Home() {
                                                     value.isDone &&
                                                     'text-neutral-900 bg-yellow-500'
                                                 }`}
+                                                onClick={() =>
+                                                    handleClick(
+                                                        key,
+                                                        value.isDone
+                                                    )
+                                                }
                                             >
                                                 {value.isDone && '\u2713'}
                                             </button>

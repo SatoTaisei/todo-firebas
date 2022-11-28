@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue, push } from 'firebase/database';
+import { getDatabase, ref, onValue, push, update } from 'firebase/database';
 import { useEffect, useState } from 'react';
 
 import { firebaseApp } from '@/services/firebase';
@@ -9,8 +9,7 @@ export const useFirebase = (path: string) => {
 
     useEffect(() => {
         const database = getDatabase(firebaseApp);
-        const pathRef = ref(database, path);
-        onValue(pathRef, (snapshot) => {
+        onValue(ref(database, path), (snapshot) => {
             const newTodoList = snapshot.val();
             setTodoList(newTodoList);
         });
@@ -18,9 +17,13 @@ export const useFirebase = (path: string) => {
 
     const addNewTodo = (newTodo: Todo) => {
         const database = getDatabase(firebaseApp);
-        const pathRef = ref(database, path);
-        push(pathRef, newTodo);
+        push(ref(database, path), newTodo);
     };
 
-    return { todoList, addNewTodo };
+    const toggleCheck = (key: string, isDone: boolean) => {
+        const database = getDatabase(firebaseApp);
+        update(ref(database, path + '/' + key), { isDone: isDone });
+    };
+
+    return { todoList, addNewTodo, toggleCheck };
 };
