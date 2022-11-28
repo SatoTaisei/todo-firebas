@@ -62,7 +62,7 @@ export default function Home() {
                                         >
                                             <button
                                                 type="button"
-                                                className={`${'w-8 h-8 rounded-full'} ${
+                                                className={`${'w-8 h-8 rounded-full text-xl font-bold'} ${
                                                     value.isDone ||
                                                     'border-2 border-neutral-500'
                                                 } ${
