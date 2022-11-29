@@ -89,10 +89,10 @@ export default function Home() {
                                             </span>
                                             <button
                                                 type="button"
-                                                className="text-neutral-500 hover:text-yellow-500 ml-4 p-1"
+                                                className="text-md text-neutral-500 hover:text-yellow-500 ml-4"
                                                 onClick={() => removeTodo(key)}
                                             >
-                                                削除
+                                                delete
                                             </button>
                                         </li>
                                     );
