@@ -1,4 +1,11 @@
-import { getDatabase, ref, onValue, push, update } from 'firebase/database';
+import {
+    getDatabase,
+    ref,
+    onValue,
+    push,
+    update,
+    remove,
+} from 'firebase/database';
 import { useEffect, useState } from 'react';
 
 import { firebaseApp } from '@/services/firebase';
@@ -25,5 +32,10 @@ export const useFirebase = (path: string) => {
         update(ref(database, path + '/' + key), { isDone: isDone });
     };
 
-    return { todoList, addNewTodo, toggleCheck };
+    const removeTodo = (key: string) => {
+        const database = getDatabase(firebaseApp);
+        remove(ref(database, path + '/' + key));
+    };
+
+    return { todoList, addNewTodo, toggleCheck, removeTodo };
 };

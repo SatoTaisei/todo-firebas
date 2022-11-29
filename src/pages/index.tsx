@@ -9,7 +9,8 @@ import { TodoInput } from '@/components/TodoInput';
 import { useFirebase } from '@/hooks/useFirebase';
 
 export default function Home() {
-    const { todoList, addNewTodo, toggleCheck } = useFirebase('todoList');
+    const { todoList, addNewTodo, toggleCheck, removeTodo } =
+        useFirebase('todoList');
 
     const [inputTodo, setInputTodo] = useState<string>('');
 
@@ -64,7 +65,7 @@ export default function Home() {
                                                 type="button"
                                                 className={`${'w-8 h-8 rounded-full text-xl font-bold'} ${
                                                     value.isDone ||
-                                                    'border-2 border-neutral-500'
+                                                    'border-2 border-neutral-500 hover:bg-neutral-800'
                                                 } ${
                                                     value.isDone &&
                                                     'text-neutral-900 bg-yellow-500'
@@ -86,6 +87,13 @@ export default function Home() {
                                             >
                                                 {value.title}
                                             </span>
+                                            <button
+                                                type="button"
+                                                className="text-neutral-500 hover:text-yellow-500 ml-4 p-1"
+                                                onClick={() => removeTodo(key)}
+                                            >
+                                                削除
+                                            </button>
                                         </li>
                                     );
                                 }
