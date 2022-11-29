@@ -10,7 +10,7 @@ export const AddButton: FC<Props> = ({ inputTodo, setInputTodo, addTodo }) => {
     return (
         <button
             type="button"
-            className="flex justify-center items-baseline w-11 bg-yellow-500 text-neutral-900 rounded-md text-4xl leading-none ml-4"
+            className="flex justify-center items-baseline w-11 bg-yellow-500 hover:bg-yellow-400 text-neutral-900 rounded-md text-4xl leading-none ml-4"
             onClick={() => {
                 if (inputTodo === '') return;
                 addTodo(inputTodo);
