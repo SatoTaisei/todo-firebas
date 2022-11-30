@@ -65,7 +65,7 @@ export default function Home() {
                                                 type="button"
                                                 className={`${'w-8 h-8 rounded-full text-xl font-bold'} ${
                                                     value.isDone ||
-                                                    'border-2 border-neutral-500 hover:bg-neutral-800'
+                                                    'border-2 border-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800'
                                                 } ${
                                                     value.isDone &&
                                                     'text-neutral-900 bg-yellow-500'
