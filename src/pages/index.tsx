@@ -52,7 +52,7 @@ export default function Home() {
                     <Loader />
                 ) : (
                     <ul className="w-11/12 max-w-md mt-10">
-                        {todoList ? (
+                        {todoList &&
                             Object.entries(todoList).map(
                                 ([key, value], index) => {
                                     // TODO: 各TODOに機能を持たせる
@@ -97,12 +97,7 @@ export default function Home() {
                                         </li>
                                     );
                                 }
-                            )
-                        ) : (
-                            <p className="w-full flex justify-center text-neutral-500 dark:text-neutral-500">
-                                TODOはありません。
-                            </p>
-                        )}
+                            )}
                     </ul>
                 )}
             </main>
