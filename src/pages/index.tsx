@@ -48,6 +48,7 @@ export default function Home() {
                 </div>
 
                 {/* Display Area */}
+                {/* TODO: todoがない場合はLoaderではなくメッセージを表示 */}
                 {loading ? (
                     <Loader />
                 ) : (
