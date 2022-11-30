@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { AddButton } from '@/components/AddButton';
+import { AddButton } from '@/components/Button/AddButton';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
