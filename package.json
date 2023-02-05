@@ -4,11 +4,11 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "dev:turbo": "turbo dev",
         "build": "next build",
-        "turbo:dev": "turbo dev",
-        "turbo:build": "turbo build",
+        "build:turbo": "turbo build",
         "start": "next start",
-        "lint": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
+        "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
         "format": "prettier --write .",
         "prepare": "husky install"
     },
